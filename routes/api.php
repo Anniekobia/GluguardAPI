@@ -25,6 +25,8 @@ Route::post('daily/meals', 'DailyLogsController@saveDailyMeals');
 
 Route::post('daily/exercise', 'DailyLogsController@saveDailyExercises');
 
+Route::get('food/recommendations', 'FoodRecommendationsController@getAllFoodRecommendations');
+
 
 
 
