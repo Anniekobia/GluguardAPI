@@ -17,7 +17,7 @@ class CreateFoodRecommendationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('food_category');
             $table->string('food_name');
-            $table->integer('serving_size');
+            $table->string('serving_size');
             $table->float('glycemic_index');
         });
     }
