@@ -11,7 +11,8 @@ class UserDetailsController extends Controller
 {
     //save user details
     public function saveUserDetail(Request $request){
-        $date = date("Y-m-d",strtotime($request->date_of_birth));
+        //$date = date("Y-m-d",strtotime($request->date_of_birth));
+        $date = date_format($date,"Y/m/d");
         $userDetail = new UserDetail([
             'user_id' => $request->user_id,
             'date_of_birth'=> $date,
