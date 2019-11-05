@@ -27,14 +27,12 @@ Route::post('daily/exercise', 'DailyLogsController@saveDailyExercises');
 
 Route::get('food/recommendations', 'FoodRecommendationsController@getAllFoodRecommendations');
 
-
-
-
+Route::post('user/details', 'UserDetailsController@saveUserDetail');
 
 
 
 
 Route::post('daily/logs', 'DailyLogsController@createDailyRecord');
-Route::post('user/details', 'UserDetailsController@saveUserDetail');
+
 
 

@@ -4,31 +4,33 @@ namespace App\Http\Controllers;
 
 use App\UserDetail;
 use Illuminate\Http\Request;
+Use DateTime;
+use Date;
 
 class UserDetailsController extends Controller
 {
     //save user details
     public function saveUserDetail(Request $request){
+        $date = date("Y-m-d",strtotime($request->date_of_birth));
         $userDetail = new UserDetail([
             'user_id' => $request->user_id,
-            'age'=> $request->age,
-            'gender' => $this->getGender($request->gender),
+            'date_of_birth'=> $date,
+            'gender' => $request->gender,
             'weight' => $request->weight,
             'height' => $request->height,
             'activity_level' => $request->activity_level,
             'daily_calories' => $this->getDailyCalories($request->activity_level, $request->gender,
-                $request->weight, $request->height, $request->age) ]);
-
+                $request->weight, $request->height, $this->getAge($request->date_of_birth))]);
         $userDetail->save();
         return $userDetail;
     }
 
-    public function getGender($gender){
-        if ($gender === 'male'){
-            return 0;
-        }else if ($gender === 'female'){
-            return 1;
-        }
+    public function getAge($dob){
+          $dob = date("d-m-Y",strtotime($dob));
+          $dobObject = new DateTime($dob);
+          $nowObject = new DateTime();
+          $diff = $dobObject->diff($nowObject);
+          return $diff->y;
     }
 
     public function calculateBMR($gender, $weight, $height, $age){
@@ -42,15 +44,15 @@ class UserDetailsController extends Controller
     }
 
     public function getDailyCalories($activity_level, $gender, $weight, $height, $age){
-        if ($activity_level === 'sedementary'){
+        if ($activity_level === 'Sedimentary'){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.2;
-        } else if ($activity_level === 'lightly active'){
+        } else if ($activity_level === 'Lightly Active'){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.375;
-        } else if ($activity_level === 'moderately active'){
+        } else if ($activity_level === 'Moderately Active'){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.55;
-        } else if ($activity_level === 'very active'){
+        } else if ($activity_level === 'Very Active'){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.725;
-        } else if ($activity_level === 'extra active'){
+        } else if ($activity_level === 'Extra Active'){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.9;
         } else{
             return 0;
