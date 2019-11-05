@@ -34,9 +34,9 @@ class UserDetailsController extends Controller
     }
 
     public function calculateBMR($gender, $weight, $height, $age){
-        if ($gender ===  'male'){
+        if ($gender ===  'Male'){
             return (10 * $weight) + (6.5 * $height) - (5 * $age) + 5;
-        }else if ($gender === 'female'){
+        }else if ($gender === 'Female'){
             return (10 * $weight) + (6.5 * $height) - (5 * $age) - 161;
         }else{
             return 0;
