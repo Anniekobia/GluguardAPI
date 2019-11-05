@@ -44,15 +44,15 @@ class UserDetailsController extends Controller
     }
 
     public function getDailyCalories($activity_level, $gender, $weight, $height, $age){
-        if ($activity_level === 'Sedimentary'){
+        if ($activity_level === "Sedimentary"){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.2;
-        } else if ($activity_level === 'Lightly Active'){
+        } else if ($activity_level === "Lightly Active"){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.375;
-        } else if ($activity_level === 'Moderately Active'){
+        } else if ($activity_level === "Moderately Active"){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.55;
-        } else if ($activity_level === 'Very Active'){
+        } else if ($activity_level === "Very Active"){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.725;
-        } else if ($activity_level === 'Extra Active'){
+        } else if ($activity_level === "Extra Active"){
             return $this->calculateBMR($gender, $weight, $height, $age) * 1.9;
         } else{
             return 0;
