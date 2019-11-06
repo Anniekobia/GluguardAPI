@@ -4,15 +4,14 @@ namespace App\Http\Controllers;
 
 use App\UserDetail;
 use Illuminate\Http\Request;
-Use DateTime;
-use Date;
+use DateTime;
+use Carbon\Carbon;
 
 class UserDetailsController extends Controller
 {
     //save user details
     public function saveUserDetail(Request $request){
-        //$date = date("Y-m-d",strtotime($request->date_of_birth));
-        $date = date_format($date,"Y/m/d");
+        $date = Carbon::createFromFormat('d/m/Y', $request->date_of_birth)->format('Y-m-d');
         $userDetail = new UserDetail([
             'user_id' => $request->user_id,
             'date_of_birth'=> $date,
