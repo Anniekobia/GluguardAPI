@@ -51,8 +51,10 @@ class DailyLogsController extends Controller
         $meal = new Meal([
             'user_id' => $request->user_id,
             'meal_name' => $request->meal_name,
-            'day' => NOW(),
-            'meal_type' => $request->meal_type
+            'meal_time' => $request->meal_time,
+            'quantity' => $request->quantity,
+            'calories' => $request->calories,
+            'day' => NOW()
         ]);
 
         $meal->save();

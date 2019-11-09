@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
 });
 
@@ -22,7 +22,7 @@ Route::get('loginpage', function()
     return view('login');
 });
 
-Route::post('login', 'API\GluconnectUserController@login');
+Route::post('login', 'API\GluconnectUserController@login');*/
 
 
 

@@ -19,7 +19,7 @@ class CreateMealsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('meal_name');
             $table->string('meal_time');
-            $table->unsignedBigInteger('quantity');
+            $table->float('quantity');
             $table->date('day');
             $table->float('calories');
             $table->timestamps();

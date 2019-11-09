@@ -13,9 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 Route::get('bloodglucose', 'BloodGlucoseController@getAllBloodGlucoseRecords');
 
@@ -29,7 +29,23 @@ Route::get('food/recommendations', 'FoodRecommendationsController@getAllFoodReco
 
 Route::post('user/details', 'UserDetailsController@saveUserDetail');
 
+//Passport authentication
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
 
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'AuthController@logout');
+        Route::get('user', 'AuthController@user');
+    });
+});
+Route::get('test', function () {
+                   echo "Beatrice";
+                       });
 
 
 Route::post('daily/logs', 'DailyLogsController@createDailyRecord');
