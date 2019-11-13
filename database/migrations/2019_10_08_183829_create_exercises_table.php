@@ -18,9 +18,8 @@ class CreateExercisesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('exercise_name');
-            $table->float('duration');
-            $table->float('distance');
-            $table->float('repetitions');
+            $table->float('duration')->nullable();
+            $table->float('distance')->nullable();
             $table->float('calories_burnt');
             $table->date('day');
             $table->timestamps();
