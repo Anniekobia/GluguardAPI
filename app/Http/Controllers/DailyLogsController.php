@@ -38,7 +38,7 @@ class DailyLogsController extends Controller
                 'user_id' => $request->user_id,
                 'exercise_name' => $request->exercise_name,
                 'duration' => $request->duration,
-                'distance' => $request->duration,
+                'distance' => $request->distance,
                 'day'=> NOW(),
                 'calories_burnt' => $request->calories_burnt
             ]);
