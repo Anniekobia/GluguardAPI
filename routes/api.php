@@ -19,6 +19,10 @@ use Illuminate\Http\Request;
 
 Route::get('bloodglucose', 'BloodGlucoseController@getAllBloodGlucoseRecords');
 
+Route::get('meals', 'MealController@getAllMealRecords');
+
+Route::get('exercises', 'ExercisesController@getAllExerciseRecords');
+
 Route::post('daily/bloodglucose', 'DailyLogsController@saveBloodGlucoseLevel');
 
 Route::post('daily/meals', 'DailyLogsController@saveDailyMeals');
