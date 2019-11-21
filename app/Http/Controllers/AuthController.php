@@ -39,9 +39,9 @@ class AuthController extends Controller
                             'email' => $request->email,
                             'password' => bcrypt($request->password)
                         ]);
-                        $user->save();
+                        $savedUser = $user->save();
                         return response()->json([
-                            "status"=>1,
+                            "status"=>$savedUser->id,
                             'message' => 'Successfully created user',
                             "error"=> ["email"=>["Validated"]],
                         ], 201);
