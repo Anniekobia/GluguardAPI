@@ -39,7 +39,8 @@ class AuthController extends Controller
                             'email' => $request->email,
                             'password' => bcrypt($request->password)
                         ]);
-                        $savedUser = $user->save();
+                        $user->save();
+                        $savedUser = User::where('email', $request->email)->first();
                         return response()->json([
                             "status"=>$savedUser->id,
                             'message' => 'Successfully created user',
