@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Validator;
+use Illuminate\Support\Facades\Redirect;
 use App\User;
 
 class AuthController extends Controller
@@ -20,22 +22,30 @@ class AuthController extends Controller
      */
     public function signup(Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(),[
             'user_type' => 'required|string',
             'username' => 'required|string',
             'email' => 'required|string|email|unique:users',
             'password' => 'required|string|confirmed'
-        ]);
-        $user = new User([
-            'user_type' => $request->user_type,
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => bcrypt($request->password)
-        ]);
-        $user->save();
-        return response()->json([
-            'message' => 'Successfully created user!'
-        ], 201);
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(["status"=>0,"message"=>"User was not created","error"=>$validator->errors()], 401);
+            }
+            else{
+                $user = new User([
+                            'user_type' => $request->user_type,
+                            'username' => $request->username,
+                            'email' => $request->email,
+                            'password' => bcrypt($request->password)
+                        ]);
+                        $user->save();
+                        return response()->json([
+                            "status"=>1,
+                            'message' => 'Successfully created user',
+                            "error"=> ["email"=>["Validated"]],
+                        ], 201);
+            }
     }
 
     /**
