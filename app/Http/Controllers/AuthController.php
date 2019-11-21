@@ -30,7 +30,7 @@ class AuthController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(["status"=>0,"message"=>"User was not created","error"=>$validator->errors()], 401);
+                return response()->json(["status"=>0,"message"=>"User was not created","error"=>$validator->errors()], 200);
             }
             else{
                 $user = new User([
