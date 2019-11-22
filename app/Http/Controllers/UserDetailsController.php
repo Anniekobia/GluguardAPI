@@ -19,6 +19,7 @@ class UserDetailsController extends Controller
             'weight' => $request->weight,
             'height' => $request->height,
             'activity_level' => $request->activity_level,
+             'hospital' => $request->hospital,
             'daily_calories' => $this->getDailyCalories($request->activity_level, $request->gender,
                 $request->weight, $request->height, $this->getAge($request->date_of_birth))]);
         $userDetail->save();
@@ -58,4 +59,6 @@ class UserDetailsController extends Controller
             return 0;
         }
     }
+
+
 }
