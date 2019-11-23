@@ -79,7 +79,7 @@ class AuthController extends Controller
             ], 401);
 
         $user = $request->user();
-        return response()->json(["status"=>0,"message"=>"Login successful","user"=>$user], 200);
+        return response()->json(["status"=>1,"message"=>"Login successful","user"=>$user], 200);
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)
