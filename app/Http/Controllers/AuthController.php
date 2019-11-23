@@ -68,10 +68,18 @@ class AuthController extends Controller
         ]);
         $credentials = request(['email', 'password']);
         if(!Auth::attempt($credentials))
-            return response()->json([
-                'message' => 'Unauthorized'
+            return response()->json(["status"=>0,
+                'message' => 'Wrong username or password',
+                "user"=>["id"=>null,
+                        "username"=> null,
+                        "email"=> null,
+                        "user_type"=> null,
+                        "created_at"=> null,
+                        "updated_at"=> null]
             ], 401);
+
         $user = $request->user();
+        return response()->json(["status"=>0,"message"=>"Login successful","user"=>$user], 200);
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)
