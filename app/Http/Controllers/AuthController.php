@@ -76,7 +76,7 @@ class AuthController extends Controller
                         "user_type"=> null,
                         "created_at"=> null,
                         "updated_at"=> null]
-            ], 401);
+            ], 201);
 
         $user = $request->user();
         return response()->json(["status"=>1,"message"=>"Login successful","user"=>$user], 200);
