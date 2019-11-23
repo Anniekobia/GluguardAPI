@@ -33,6 +33,8 @@ Route::get('food/recommendations', 'FoodRecommendationsController@getAllFoodReco
 
 Route::post('user/details', 'UserDetailsController@saveUserDetail');
 
+Route::get('userdetails', 'UserDetailsController@getUserDetails');
+
 //Passport authentication
 Route::group([
     'prefix' => 'auth'
