@@ -23,6 +23,7 @@ class CreateUserDetailsTable extends Migration
             $table->float('height');
             $table->string('activity_level');
             $table->string('hospital');
+            $table->string('profile_picture_path')->nullable();
             $table->float('daily_calories');
             $table->timestamps();
         });
