@@ -63,7 +63,7 @@ class UserDetailsController extends Controller
     public function getUserDetails(Request $request){
             $savedUser = UserDetail::where('user_id', $request->user_id)->first();
             $response["UserDetails"] = $savedUser;
-            $response["success"] = 0;
+            $response["success"] = 1;
             return response()->json($response);
     }
 
