@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\BloodGlucose;
 use App\Exercises;
 use App\Meal;
+use App\Medication;
 use http\Exception\RuntimeException;
 use Illuminate\Http\Request;
 
