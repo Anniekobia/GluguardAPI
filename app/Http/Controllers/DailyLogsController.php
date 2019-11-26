@@ -50,7 +50,6 @@ class DailyLogsController extends Controller
     }
 
     public function saveDailyMeals(Request $request){
-            //['user_id', 'name','day', 'meal_type'];
         $meal = new Meal([
             'user_id' => $request->user_id,
             'meal_name' => $request->meal_name,
@@ -63,4 +62,16 @@ class DailyLogsController extends Controller
         $meal->save();
         return $meal;
     }
+
+     public function saveDailyMedications(Request $request){
+            $medication = new Medication([
+                'user_id' => $request->user_id,
+                'name' => $request->name,
+                'units' => $request->units,
+                'day' => NOW()
+            ]);
+
+            $medication->save();
+            return $medication;
+        }
 }
