@@ -11,11 +11,11 @@
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('patients', 'API\GluconnectUserController@getAllPatients');
+/*Route::get('patients', 'API\GluconnectUserController@getAllPatients');
 
 Route::get('loginpage', function()
 {
