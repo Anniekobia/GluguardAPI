@@ -71,7 +71,7 @@
                         </div>
 
                         <div class="links">
-                            <a href="loginpage">Proceed</a>
+                            <a href="patients">Proceed</a>
                         </div>
                     </div>
                 </div>

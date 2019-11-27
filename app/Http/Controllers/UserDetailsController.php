@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\UserDetail;
+use App\BloodGlucose;
+use App\Meal;
+use App\Medication;
+use App\Exercises;
 use Illuminate\Http\Request;
 use DateTime;
+use DB;
 use Carbon\Carbon;
 
 class UserDetailsController extends Controller
@@ -67,5 +72,30 @@ class UserDetailsController extends Controller
             return response()->json($response);
     }
 
+    public function getAllPatients(){
+         /*$patients  = UserDetail::all();
+         //return $patients;
+         return view('patients')->with('patients',$patients);*/
+
+        $users = DB::table('users')
+                    ->join('blood_glucose', 'users.id', '=', 'blood_glucose.user_id')
+                    ->join('user_details', 'users.id', '=', 'user_details.user_id')
+                    ->select('users.id','users.username', 'users.email', 'blood_glucose.blood_glucose_value')
+                    //->select('users.id','users.username', 'user_details.gender')
+                    ->get();
+
+         return view('patients')->with('patients',$users);
+        }
+
+        public function getPatient($id){
+            $bg = BloodGlucose::where('user_id',$id)->get();
+            $meals = Meal::where('user_id',$id)->get();
+            $exercises = Exercises::where('user_id',$id)->get();
+            $meds = Medication::where('user_id',$id)->get();
+            return view('patient')->with('bg',$bg)
+                        ->with('meals',$meals)
+                        ->with('exercises',$exercises)
+                        ->with('meds',$meds);
+         }
 
 }

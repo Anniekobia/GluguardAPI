@@ -11,18 +11,27 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-/*Route::get('patients', 'API\GluconnectUserController@getAllPatients');
+Route::get('patients', 'UserDetailsController@getAllPatients');
 
 Route::get('loginpage', function()
 {
     return view('login');
 });
 
-Route::post('login', 'API\GluconnectUserController@login');*/
+Route::get('patient', function()
+{
+    return view('patient');
+});
+
+Route::get('patient/{id}', ['as' => 'patient','uses'=>'UserDetailsController@getPatient']);
+
+//Route::post('login', 'API\GluconnectUserController@login');*/
 
 
 
