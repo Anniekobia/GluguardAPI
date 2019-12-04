@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="PMFjIwFsrIZZa25aUSK5kTRlX40UsHPShRIZOzo4">
 
-    <title>Laravel</title>
+    <title>Aga Khan</title>
 
     <!-- Scripts -->
     <script src="http://eventsconnect.herokuapp.com/js/app.js" defer></script>
@@ -129,14 +129,8 @@
                    <?php }?>
                  </table>
              </div>*/-->
-
-
-
         </div>
-
-
     </div>
-
     </body>
 </html>
 

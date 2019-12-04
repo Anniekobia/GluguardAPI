@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="PMFjIwFsrIZZa25aUSK5kTRlX40UsHPShRIZOzo4">
 
-    <title>Laravel</title>
+    <title>Aga Khan</title>
 
     <!-- Scripts -->
     <script src="http://eventsconnect.herokuapp.com/js/app.js" defer></script>
@@ -61,7 +61,7 @@
                 </div>
             </div>
         </nav>
-<div class="row justify-content-center" margin: auto>
+<div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
 
@@ -88,7 +88,6 @@
                         <td><?php echo $patients->username?> </td>
                         <td><?php echo $patients->email?> </td>
                         <?php if ($patients->blood_glucose_value <= 70 || $patients->blood_glucose_value >= 198) { ?>
-
                             <td><a href="{{ route('patient', $patients->id)}}">
                                     <button type="submit" class="button"></button>
                                 </a></td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BloodGlucose;
 use App\Exercises;
+use App\DailySteps;
 use App\Meal;
 use App\Medication;
 use http\Exception\RuntimeException;
@@ -49,6 +50,28 @@ class DailyLogsController extends Controller
 
     }
 
+    public function saveDailySteps(Request $request){
+            $steps = new DailySteps([
+                    'user_id' => $request->user_id,
+                    'step_count' => $request->step_count,
+                    'day'=> NOW(),
+                    'calories_burnt' => $request->calories_burnt
+                ]);
+
+            $steps->save();
+            return $steps;
+
+        }
+
+    public function updateDailySteps(Request $request){
+                $steps = DailySteps::find($request->id);
+                $steps->step_count = $request->step_count;
+                $steps->calories_burnt = $request->calories_burnt;
+
+                $steps->save();
+                return $steps;
+    }
+
     public function saveDailyMeals(Request $request){
         $meal = new Meal([
             'user_id' => $request->user_id,
@@ -74,4 +97,5 @@ class DailyLogsController extends Controller
             $medication->save();
             return $medication;
         }
+
 }

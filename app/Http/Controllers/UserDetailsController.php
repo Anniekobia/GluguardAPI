@@ -92,10 +92,12 @@ class UserDetailsController extends Controller
             $meals = Meal::where('user_id',$id)->get();
             $exercises = Exercises::where('user_id',$id)->get();
             $meds = Medication::where('user_id',$id)->get();
+            $user_details = UserDetail::where('user_id',$id)->get();
             return view('patient')->with('bg',$bg)
                         ->with('meals',$meals)
                         ->with('exercises',$exercises)
-                        ->with('meds',$meds);
+                        ->with('meds',$meds)
+                        ->with('user_details',$user_details);
          }
 
 }

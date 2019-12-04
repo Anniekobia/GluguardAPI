@@ -23,6 +23,8 @@ Route::get('meals', 'MealController@getAllMealRecords');
 
 Route::get('exercises', 'ExercisesController@getAllExerciseRecords');
 
+Route::get('steps', 'DailyStepsController@getAllDailyStepsRecords');
+
 Route::get('medications', 'MedicationsController@getAllMedications');
 
 Route::post('daily/bloodglucose', 'DailyLogsController@saveBloodGlucoseLevel');
@@ -30,6 +32,10 @@ Route::post('daily/bloodglucose', 'DailyLogsController@saveBloodGlucoseLevel');
 Route::post('daily/meals', 'DailyLogsController@saveDailyMeals');
 
 Route::post('daily/exercise', 'DailyLogsController@saveDailyExercises');
+
+Route::post('daily/steps', 'DailyLogsController@saveDailySteps');
+
+Route::post('daily/steps/update', 'DailyLogsController@updateDailySteps');
 
 Route::post('daily/medications', 'DailyLogsController@saveDailyMedications');
 

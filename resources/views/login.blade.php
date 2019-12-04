@@ -74,9 +74,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-                                <div class="links">
-                                    <a href="patients">Proceed</a>
-                                </div>
+
 
                                 </a>
                             </div>
